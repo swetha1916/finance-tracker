@@ -6,6 +6,7 @@ function Signup({onSignup}) {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -25,8 +26,18 @@ function Signup({onSignup}) {
         <div> 
             <h2>Sign up!</h2>
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-                <input type="text" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <div>
+                    <label>Username:</label><br/>
+                    <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} maxLength={20} required/>
+                    <small style={{color:'gray'}}>Max 20 characters</small>
+                </div>
+
+                <div>
+                    <label>Password:</label><br/>
+                    <input type="text" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} maxLength={20} required/>
+                    <small style={{color:'gray'}}>Max 20 characters</small>
+                </div>
+
                 <button type="submit">Sign up</button>
             </form>
             {error && <p style={{color:'red'}}>{error}</p>}
