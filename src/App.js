@@ -1,25 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState} from "react";
+import WelcomePage from './components/WelcomePage';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import Dashboard from './components/Dashboard';
+
 
 function App() {
+  const [currentPage, setCurrentPage] = useState('welcome');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    setCurrentPage('dashboard');
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {isLoggedIn ? (<Dashboard/>) : (
+        <>
+          {currentPage === 'welcome' && <WelcomePage setCurrentPage={setCurrentPage} />}
+          {currentPage === 'login' && <Login onLogin={handleLogin} />}
+          {currentPage === 'signup' && <Signup onSignup={handleLogin} />}
+        </>
+      )}
     </div>
-  );
+  )
 }
 
 export default App;
