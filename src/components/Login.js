@@ -8,32 +8,16 @@ function Login({onLogin}) {
     const [isValidPwd, setIsValidPwd] = useState(false);
     const [error, setError] = useState('');
 
-    const validateUsername = (username) => {
-        if (username.length < 1) {
-            setIsValidUsername(false);
-        } else {
-            setIsValidUsername(true);
-        }
-    };
-
-    const validatePassword = (password) => {
-        if (password.length < 1) {
-            setIsValidPwd(false);
-        } else {
-            setIsValidPwd(true);
-        }
-    };
-
     const handleUsernameChange = (e) => {
         const username = e.target.value;
         setUsername(username);
-        validateUsername(username); 
+        setIsValidUsername(username.length > 0);
     };
 
     const handlePasswordChange = (e) => {
         const pwd = e.target.value;
         setPassword(pwd);
-        validatePassword(pwd);
+        setIsValidPwd(pwd.length > 0);
     };
 
     const handleSubmit = async (e) => {

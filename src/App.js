@@ -7,22 +7,38 @@ import Dashboard from './components/Dashboard';
 
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('welcome');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [page, setPage] = useState('login');
+  const[signupSuccess, setSignupSuccess] = useState(false);
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-    setCurrentPage('dashboard');
+  const handleLoginSuccess = () => {
+    alert("Log in successful!")
+    setPage('dashboard');
+  }
+
+  const handleSignupSuccess = () => {
+    alert("Sign up successful!")
+    setSignupSuccess(true);
+    setPage('login');
   }
 
   return (
     <div>
-      {isLoggedIn ? (<Dashboard/>) : (
+      {page === 'login' && (
         <>
-          {currentPage === 'welcome' && <WelcomePage setCurrentPage={setCurrentPage} />}
-          {currentPage === 'login' && <Login onLogin={handleLogin} />}
-          {currentPage === 'signup' && <Signup onSignup={handleLogin} />}
+          <Login onLogin={handleLoginSuccess} />
+          <p>New user? <button onClick={() => setPage('signup')}>Sign up</button></p>
         </>
+      )}
+
+      {page === 'signup' && (
+        <>
+          <Signup onSignup={handleSignupSuccess} />
+          <p>Already have an account? <button onClick={() => setPage('login')}>Log in</button></p>  
+        </>
+      )}
+
+      {page === 'dashboard' && (
+        <Dashboard/>
       )}
     </div>
   )
