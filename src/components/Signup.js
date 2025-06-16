@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import axios from 'axios';
-import { isValidDateValue } from "@testing-library/user-event/dist/utils";
 
 function Signup({onSignup}) {
     const [username, setUsername] = useState('');
