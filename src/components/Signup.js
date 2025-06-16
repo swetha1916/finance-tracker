@@ -1,31 +1,50 @@
 import React, {useState} from "react";
 import axios from 'axios';
+import { isValidDateValue } from "@testing-library/user-event/dist/utils";
 
 function Signup({onSignup}) {
     const [username, setUsername] = useState('');
+    const [usernameValidationMsg, setUsernameValidationMsg] = useState('');
+    const [isValidUsername, setIsValidUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [validationMsg, setValidationMsg] = useState("");
-    const [isValid, setIsValid] = useState(false);
+    const [pwdValidationMsg, setPwdValidationMsg] = useState("");
+    const [isValidPwd, setIsValidPwd] = useState(false);
     const [error, setError] = useState('');
 
     // Regular expression for at least 1
     const hasNumber = /\d/;
     const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/;
 
+    const validateUsername = (username) => {
+        if (username.length < 5) {
+            setUsernameValidationMsg("Username is too short.")
+            setIsValidUsername(false);
+        } else {
+            setUsernameValidationMsg("Username meets all conditions.")
+            setIsValidUsername(true);
+        }
+    };
+
     const validatePassword = (pwd) => {
         if (pwd.length < 8) {
-            setValidationMsg("Password is too short.");
-            setIsValid(false);
+            setPwdValidationMsg("Password is too short.");
+            setIsValidPwd(false);
         } else if (!hasNumber.test(pwd)) {
-            setValidationMsg("Password is missing a numerical character.");
-            setIsValid(false);
+            setPwdValidationMsg("Password is missing a numerical character.");
+            setIsValidPwd(false);
         } else if (!hasSpecialChar.test(pwd)) {
-            setValidationMsg("Password is missing a special character.");
-            setIsValid(false);
+            setPwdValidationMsg("Password is missing a special character.");
+            setIsValidPwd(false);
         } else {
-            setValidationMsg("Password meets all conditions.");
-            setIsValid(true);
+            setPwdValidationMsg("Password meets all conditions.");
+            setIsValidPwd(true);
         }   
+    };
+
+    const handleUsernameChange = (e) => {
+        const username = e.target.value;
+        setUsername(username);
+        validateUsername(username); 
     };
 
     const handlePasswordChange = (e) => {
@@ -55,8 +74,17 @@ function Signup({onSignup}) {
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Username:</label><br/>
-                    <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} maxLength={20} required/>
+                    <input type="text" placeholder="Username" value={username} onChange={handleUsernameChange} maxLength={20} required/>
                     <small style={{color:'gray'}}>Max 20 characters</small>
+                    <small style={{ display: 'block', marginTop: 5 }}>
+                        Username rules:
+                        <ul style={{ marginTop: 5, marginBottom: 5 }}>
+                            <li>Must be at least 5 characters long</li>
+                        </ul>
+                    </small>
+                    <div style={{ color: usernameValidationMsg === "Username meets all conditions." ? 'green' : 'red', marginTop: 5 }}>
+                    {usernameValidationMsg}
+                    </div>
                 </div>
 
                 <div>
@@ -71,12 +99,12 @@ function Signup({onSignup}) {
                             <li>Must be at least 8 characters long</li>
                         </ul>
                     </small>
-                    <div style={{ color: validationMsg === "Password meets all conditions." ? 'green' : 'red', marginTop: 5 }}>
-                    {validationMsg}
+                    <div style={{ color: pwdValidationMsg === "Password meets all conditions." ? 'green' : 'red', marginTop: 5 }}>
+                    {pwdValidationMsg}
                     </div>
                 </div>
 
-                <button type="submit" disabled={!isValid}>Sign up</button>
+                <button type="submit" disabled={!isValidPwd || !isValidUsername}>Sign up</button>
             </form>
             {error && <p style={{color:'red'}}>{error}</p>}
         </div>
