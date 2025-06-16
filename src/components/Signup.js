@@ -4,7 +4,7 @@ import axios from 'axios';
 function Signup({onSignup}) {
     const [username, setUsername] = useState('');
     const [usernameValidationMsg, setUsernameValidationMsg] = useState('');
-    const [isValidUsername, setIsValidUsername] = useState('');
+    const [isValidUsername, setIsValidUsername] = useState(false);
     const [password, setPassword] = useState('');
     const [pwdValidationMsg, setPwdValidationMsg] = useState("");
     const [isValidPwd, setIsValidPwd] = useState(false);

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function Login({onLogin}) {
     const [username, setUsername] = useState('');
-    const [isValidUsername, setIsValidUsername] = useState('');
+    const [isValidUsername, setIsValidUsername] = useState(false);
     const [password, setPassword] = useState('');
     const [isValidPwd, setIsValidPwd] = useState(false);
     const [error, setError] = useState('');
@@ -68,7 +68,7 @@ function Login({onLogin}) {
 
                 <button type="submit" disabled={!isValidPwd || !isValidUsername}>Log in</button>
             </form>
-            {error && <p stype={{color:'red'}}>{error}</p>}
+            {error && <p style={{color:'red'}}>{error}</p>}
         </div>
     )
 }
