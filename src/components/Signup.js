@@ -15,10 +15,13 @@ function Signup({onSignup}) {
     const validatePassword = (pwd) => {
         if (pwd.length < 8) {
             setValidationMsg("Password is too short.");
+            setIsValid(false);
         } else if (!hasNumber.test(pwd)) {
             setValidationMsg("Password is missing a numerical character.");
+            setIsValid(false);
         } else if (!hasSpecialChar.test(pwd)) {
             setValidationMsg("Password is missing a special character.");
+            setIsValid(false);
         } else {
             setValidationMsg("Password meets all conditions.");
             setIsValid(true);
