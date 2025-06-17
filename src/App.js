@@ -1,47 +1,25 @@
 import './App.css';
 import React, {useState} from "react";
-import WelcomePage from './components/WelcomePage';
-import Login from './components/Login';
-import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
+import WelcomePage from './components/WelcomePage';
 
 
 function App() {
-  const [page, setPage] = useState('login');
-  const[signupSuccess, setSignupSuccess] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLoginSuccess = () => {
-    alert("Log in successful!")
-    setPage('dashboard');
-  }
-
-  const handleSignupSuccess = () => {
-    alert("Sign up successful!")
-    setSignupSuccess(true);
-    setPage('login');
-  }
+    setIsLoggedIn(true);
+  };
 
   return (
     <div>
-      {page === 'login' && (
-        <>
-          <Login onLogin={handleLoginSuccess} />
-          <p>New user? <button onClick={() => setPage('signup')}>Sign up</button></p>
-        </>
-      )}
-
-      {page === 'signup' && (
-        <>
-          <Signup onSignup={handleSignupSuccess} />
-          <p>Already have an account? <button onClick={() => setPage('login')}>Log in</button></p>  
-        </>
-      )}
-
-      {page === 'dashboard' && (
-        <Dashboard/>
+      {isLoggedIn ? (
+        <Dashboard />
+      ) : (
+        <WelcomePage onLogin={handleLoginSuccess} />
       )}
     </div>
-  )
+  );
 }
 
 export default App;

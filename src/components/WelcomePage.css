@@ -1,0 +1,52 @@
+.welcome-container {
+    display: flex;
+    height: 100vh;
+    font-family: sans-serif;
+}
+
+.left-card {
+    width: 40%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f4f4f4;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.right-info {
+    width: 60%;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    color: white;
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.right-info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.right-info p {
+    font-size: 1.2rem;
+    max-width: 600px;
+}
+
+.login-prompt {
+    margin-top: 40px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.toggle-text {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.toggle-link {
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+}
