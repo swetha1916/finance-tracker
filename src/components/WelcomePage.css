@@ -21,6 +21,11 @@
   /* Leather stitching type border */
   border: 4px dashed #7B4B26; 
   position: relative;
+
+  /* ✅ Fix for overflowing form */
+  max-height: 85vh;
+  overflow-y: auto;
+  scrollbar-width: thick;
 }
 
 /* Right welcome/info section */
