@@ -1,52 +1,65 @@
 .welcome-container {
-    display: flex;
-    height: 100vh;
-    font-family: sans-serif;
+  display: flex;
+  height: 100vh;
+  background-image: url('Assets/welcome-bg.png'); 
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
 }
 
+/* Left card section */
 .left-card {
-    width: 40%;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #f4f4f4;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  background-color: #C19A6B; 
+  padding: 3rem;
+  margin: 2rem;
+  border-radius: 10px;
+  max-width: 400px;
+  color: #3E2C1C; 
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+
+  /* Leather stitching type border */
+  border: 4px dashed #7B4B26; 
+  position: relative;
 }
 
+/* Right welcome/info section */
 .right-info {
-    width: 60%;
-    background: linear-gradient(to right, #4facfe, #00f2fe);
-    color: white;
-    padding: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem;
+  color: #fff;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 .right-info h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 1000;
 }
 
 .right-info p {
-    font-size: 1.2rem;
-    max-width: 600px;
+  font-size: 1.2rem;
+  max-width: 600px;
+  font-weight: 500;
 }
 
 .login-prompt {
-    margin-top: 40px;
-    font-weight: bold;
-    font-size: 1.1rem;
+  margin-top: 4rem;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
+/* Text links */
 .toggle-text {
-    margin-top: 20px;
-    font-size: 0.9rem;
+  margin-top: 1rem;
+  font-size: 0.95rem;
 }
 
 .toggle-link {
-    color: #007bff;
-    cursor: pointer;
-    text-decoration: underline;
+  color: #0077cc;
+  cursor: pointer;
+  text-decoration: underline;
 }

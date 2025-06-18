@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import axios from 'axios';
+import './Signup.css';
 
 function Signup({onSignup}) {
     const [username, setUsername] = useState('');
@@ -68,7 +69,7 @@ function Signup({onSignup}) {
     };
 
     return (
-        <div> 
+        <div className="signup-container"> 
             <h2>Sign up!</h2>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -76,12 +77,11 @@ function Signup({onSignup}) {
                     <input type="text" placeholder="Username" value={username} onChange={handleUsernameChange} maxLength={20} required/>
                     <small style={{color:'gray'}}>Max 20 characters</small>
                     <small style={{ display: 'block', marginTop: 5 }}>
-                        Username rules:
                         <ul style={{ marginTop: 5, marginBottom: 5 }}>
                             <li>Must be at least 5 characters long</li>
                         </ul>
                     </small>
-                    <div style={{ color: usernameValidationMsg === "Username meets all conditions." ? 'green' : 'red', marginTop: 5 }}>
+                    <div className={`validation-msg ${isValidUsername ? 'valid' : 'invalid'}`} style={{ color: usernameValidationMsg === "Username meets all conditions." ? 'green' : 'red', marginTop: 5 }}>
                     {usernameValidationMsg}
                     </div>
                 </div>
@@ -91,14 +91,13 @@ function Signup({onSignup}) {
                     <input type="text" placeholder="Password" value={password} onChange={handlePasswordChange} maxLength={20} required/>
                     <small style={{color:'gray'}}>Max 20 characters</small><br/>
                     <small style={{ display: 'block', marginTop: 5 }}>
-                        Password rules:
                         <ul style={{ marginTop: 5, marginBottom: 5 }}>
                             <li>Must include at least 1 number</li>
                             <li>Must include at least 1 special character (!@#$%^&*(),.?":{}\|)</li>
                             <li>Must be at least 8 characters long</li>
                         </ul>
                     </small>
-                    <div style={{ color: pwdValidationMsg === "Password meets all conditions." ? 'green' : 'red', marginTop: 5 }}>
+                    <div className={`validation-msg ${isValidPwd ? 'valid' : 'invalid'}`} style={{ color: pwdValidationMsg === "Password meets all conditions." ? 'green' : 'red', marginTop: 5 }}>
                     {pwdValidationMsg}
                     </div>
                 </div>
