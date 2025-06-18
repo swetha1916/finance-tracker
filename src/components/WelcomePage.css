@@ -1,7 +1,8 @@
 .welcome-container {
   display: flex;
   height: 100vh;
-  background-image: url('Assets/welcome-bg.png'); 
+  background-image: url('Assets/table.png');
+  background-size: cover; 
   background-position: center;
   background-repeat: no-repeat;
   color: #fff;
@@ -10,16 +11,15 @@
 /* Left card section */
 .left-card {
   flex: 1;
-  background-color: #C19A6B; 
+  background-color: white;
   padding: 3rem;
   margin: 2rem;
   border-radius: 10px;
   max-width: 400px;
-  color: #3E2C1C; 
+  color: black; 
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
 
-  /* Leather stitching type border */
-  border: 4px dashed #7B4B26; 
+  border: 4px #000000; 
   position: relative;
 
   /* ✅ Fix for overflowing form */
